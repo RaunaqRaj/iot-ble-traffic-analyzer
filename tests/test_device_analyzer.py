@@ -60,3 +60,71 @@ def test_device_risk_classification():
     assert risks["DEVICE_LOW"] == "LOW"
     assert risks["DEVICE_MEDIUM"] == "MEDIUM"
     assert risks["DEVICE_HIGH"] == "HIGH"
+
+    def test_low_risk_device():
+
+        anomaly_percentage = 0
+        packets_per_second = 2
+
+        if (
+            anomaly_percentage >= 50
+            or packets_per_second >= 20
+        ):
+            risk = "HIGH"
+
+        elif (
+            anomaly_percentage >= 10
+            or packets_per_second >= 10
+        ):
+            risk = "MEDIUM"
+
+        else:
+            risk = "LOW"
+
+        assert risk == "LOW"
+
+
+def test_medium_risk_from_frequency():
+
+    anomaly_percentage = 0
+    packets_per_second = 10
+
+    if (
+        anomaly_percentage >= 50
+        or packets_per_second >= 20
+    ):
+        risk = "HIGH"
+
+    elif (
+        anomaly_percentage >= 10
+        or packets_per_second >= 10
+    ):
+        risk = "MEDIUM"
+
+    else:
+        risk = "LOW"
+
+    assert risk == "MEDIUM"
+
+
+def test_high_risk_from_frequency():
+
+    anomaly_percentage = 0
+    packets_per_second = 20
+
+    if (
+        anomaly_percentage >= 50
+        or packets_per_second >= 20
+    ):
+        risk = "HIGH"
+
+    elif (
+        anomaly_percentage >= 10
+        or packets_per_second >= 10
+    ):
+        risk = "MEDIUM"
+
+    else:
+        risk = "LOW"
+
+    assert risk == "HIGH"

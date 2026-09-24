@@ -4,6 +4,9 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.engine import URL
 load_dotenv()
+from src.logger import get_logger
+
+logger = get_logger("database")
 
 DB_CONFIG = {
     "host": os.getenv("DB_HOST"),
@@ -15,10 +18,17 @@ DB_CONFIG = {
 
 
 def get_connection():
-    connection = psycopg2.connect(
-        **DB_CONFIG
-    )
-    return connection
+
+    try:
+        connection = psycopg2.connect(**DB_CONFIG)
+
+        logger.info("PostgreSQL connection established")
+
+        return connection
+
+    except Exception:
+        logger.exception("Failed to connect to PostgreSQL")
+        raise
 
 def get_sqlalchemy_engine():
     database_url = URL.create(

@@ -90,3 +90,35 @@ def test_large_packet_anomaly_detection():
     ]
 
     assert large_packet["large_packet_anomaly"].all()
+
+def test_empty_dataframe():
+
+        df = pd.DataFrame(
+        columns=[
+            "packet_id",
+            "timestamp",
+            "device_address",
+            "packet_length"
+        ]
+    )
+
+        result = detect_anomalies(df)
+
+        assert result.empty
+
+
+def test_single_packet_device():
+
+    df = pd.DataFrame([
+        {
+            "packet_id": 1,
+            "timestamp": 1000,
+            "device_address": "AA:BB:CC:DD:EE:01",
+            "packet_length": 20
+        }
+    ])
+
+    result = detect_anomalies(df)
+
+    assert len(result) == 1
+    assert "is_anomaly" in result.columns

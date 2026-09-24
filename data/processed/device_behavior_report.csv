@@ -1,6 +1,0 @@
-device_address,packet_count,avg_packet_length,min_packet_length,max_packet_length,avg_payload_size,packets_per_second,anomaly_count,large_packet_anomaly_count,high_frequency_anomaly_count,first_seen,last_seen,anomaly_percentage,risk_level
-aa:bb:cc:dd:ee:01,55,35.42,25,95,20.42,1.88,5,5,0,2026-09-24 03:56:57.226948+00:00,2026-09-24 03:57:26.526948+00:00,9.09,LOW
-aa:bb:cc:dd:ee:02,53,33.11,25,95,18.11,2.16,3,3,0,2026-09-24 03:57:02.226948+00:00,2026-09-24 03:57:26.726948+00:00,5.66,LOW
-aa:bb:cc:dd:ee:03,55,35.82,25,95,20.82,2.76,5,5,0,2026-09-24 03:57:07.226948+00:00,2026-09-24 03:57:27.126948+00:00,9.09,LOW
-aa:bb:cc:dd:ee:04,57,37.95,25,95,22.95,3.88,7,7,0,2026-09-24 03:57:12.226948+00:00,2026-09-24 03:57:26.926948+00:00,12.28,MEDIUM
-aa:bb:cc:dd:ee:99,80,30.66,25,35,15.66,101.27,80,0,80,2026-09-24 03:56:59.226948+00:00,2026-09-24 03:57:00.016948+00:00,100.0,HIGH

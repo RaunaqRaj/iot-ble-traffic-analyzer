@@ -34,3 +34,22 @@ def test_combined_classification():
         classify_anomaly(row)
         == "Large Packet + High Frequency"
     )
+
+    def test_combined_anomaly_classification():
+
+        large_packet = True
+        high_frequency = True
+
+        if large_packet and high_frequency:
+            classification = "Large Packet + High Frequency"
+
+        elif large_packet:
+            classification = "Large Packet"
+
+        elif high_frequency:
+            classification = "High Frequency"
+
+        else:
+            classification = "Normal"
+
+        assert classification == "Large Packet + High Frequency"

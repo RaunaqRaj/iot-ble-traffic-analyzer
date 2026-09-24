@@ -1,6 +1,8 @@
 import subprocess
 import sys
+from src.logger import get_logger
 
+logger = get_logger("pipeline")
 
 STEPS = [
     ("Generate BLE test capture", [
@@ -42,18 +44,28 @@ STEPS = [
 
 
 def run_step(name, command):
+
     print("\n" + "=" * 70)
     print(name)
     print("=" * 70)
 
-    result = subprocess.run(command)
+    logger.info(f"Starting: {name}")
 
-    if result.returncode != 0:
-        print(f"\nFAILED: {name}")
+    try:
+        result = subprocess.run(command)
+
+        if result.returncode != 0:
+            logger.error(f"Failed: {name}")
+            return False
+
+        logger.info(f"Completed: {name}")
+        return True
+
+    except Exception as error:
+        logger.exception(
+            f"Unexpected error while running {name}: {error}"
+        )
         return False
-
-    print(f"\nCOMPLETED: {name}")
-    return True
 
 
 def main():

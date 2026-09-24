@@ -1,9 +1,13 @@
 import pandas as pd
 from database.db_connection import get_connection
-
+from src.config import (
+    PACKET_SIZE_STD_MULTIPLIER,
+    FREQUENCY_THRESHOLD_MULTIPLIER
+)
+from src.logger import get_logger
 
 INPUT_FILE = "data/processed/ble_packets.csv"
-
+logger = get_logger("anomaly_detector")
 
 def load_data():
     return pd.read_csv(INPUT_FILE)
@@ -24,8 +28,8 @@ def detect_anomalies(df):
     packet_length_std = df["packet_length"].std()
 
     packet_length_threshold = (
-        packet_length_mean +
-        (2 * packet_length_std)
+    packet_length_mean
+    + (PACKET_SIZE_STD_MULTIPLIER * packet_length_std)
     )
 
     df["large_packet_anomaly"] = (
@@ -82,7 +86,8 @@ def detect_anomalies(df):
     )
 
     frequency_threshold = (
-        frequency_median * 5
+    frequency_median
+    * FREQUENCY_THRESHOLD_MULTIPLIER
     )
 
     df["high_frequency_anomaly"] = (
@@ -144,7 +149,10 @@ def main():
 
     df = load_data()
 
+    logger.info(f"Loaded {len(df)} packets")
+
     df = detect_anomalies(df)
+
 
     total_packets = len(df)
 
@@ -155,7 +163,11 @@ def main():
     print(f"\nTotal packets : {total_packets}")
     print(f"Anomalies     : {anomaly_count}")
 
+    logger.info(f"Detected {anomaly_count} anomalies")
+
     save_to_database(df)
+
+    logger.info("Anomaly results saved to PostgreSQL")
 
     print("\nAnomaly results saved to PostgreSQL!")
 
