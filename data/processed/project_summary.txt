@@ -1,0 +1,29 @@
+
+BLE NETWORK TRAFFIC ANALYTICS SUMMARY
+=====================================
+
+Traffic Overview
+----------------
+Total packets        : 300
+Unique devices       : 5
+Normal packets       : 200
+Anomalous packets    : 100
+Anomaly percentage   : 33.33%
+
+Anomaly Breakdown
+-----------------
+High-frequency      : 80
+Large-packet        : 20
+
+Traffic Analysis
+----------------
+Most active device  : aa:bb:cc:dd:ee:99
+Packet count        : 80
+
+Device Packet Counts
+--------------------
+aa:bb:cc:dd:ee:99 : 80 packets
+aa:bb:cc:dd:ee:01 : 61 packets
+aa:bb:cc:dd:ee:04 : 55 packets
+aa:bb:cc:dd:ee:02 : 54 packets
+aa:bb:cc:dd:ee:03 : 50 packets
