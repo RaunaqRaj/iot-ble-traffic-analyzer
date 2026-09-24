@@ -1,43 +1,67 @@
 # Network Traffic & Signalling Protocol Analyzer (IoT/BLE)
 
-A Python-based BLE traffic analysis and anomaly detection platform designed to monitor device behavior, identify unusual traffic patterns, store packet-level data in PostgreSQL, and visualize network activity through Power BI.
+A Python-based BLE traffic analysis and anomaly detection platform designed to analyze device behavior, identify unusual traffic patterns, store packet-level analytics in PostgreSQL, generate automated reports, and visualize network activity through Power BI.
+
+> **Project status:** Core pipeline completed and tested.
+
+---
 
 ## Overview
 
-IoT and BLE devices generate continuous network traffic that can be difficult to analyze manually. This project provides an automated pipeline for extracting BLE packet information, analyzing traffic behavior, detecting anomalies, classifying device risk, and generating analytical reports.
+IoT and Bluetooth Low Energy (BLE) devices can generate large amounts of traffic that are difficult to inspect manually.
 
-The project currently uses controlled synthetic BLE traffic generated with Scapy to provide reproducible testing and analysis.
+This project provides an automated analysis pipeline that:
 
-> **Note:** The current implementation uses synthetic/test BLE traffic. It is not presented as a live over-the-air BLE capture system.
+- Generates controlled BLE test traffic
+- Creates a PCAP capture
+- Extracts BLE packet information
+- Stores packet-level data in PostgreSQL
+- Calculates traffic metrics
+- Detects unusual traffic behavior
+- Classifies device-level behavioral risk
+- Generates automated reports
+- Visualizes traffic through Power BI
+- Provides automated testing with pytest
+- Uses centralized logging for troubleshooting
+
+The current implementation uses **controlled synthetic BLE traffic generated with Scapy**. This provides reproducible traffic patterns for development, testing, and anomaly-detection experiments.
+
+> **Important:** The current implementation is not presented as a live over-the-air BLE capture system.
 
 ---
 
 ## Architecture
 
 ```text
-BLE / IoT Traffic
-       |
-       v
-Packet Capture / PCAP
-       |
-       v
-Python Packet Parser
-       |
-       v
-Traffic Analyzer
-       |
-       +-------------------+
-       |                   |
-       v                   v
- PostgreSQL          Anomaly Detection
-       |                   |
-       +---------+---------+
-                 |
-                 v
-        Device Behavior Analysis
-                 |
-                 v
-        Automated Reports
-                 |
-                 v
-             Power BI
+BLE / IoT Test Traffic
+          |
+          v
+   Scapy Packet Generator
+          |
+          v
+       PCAP File
+          |
+          v
+    Python Packet Parser
+          |
+          v
+    Processed CSV Data
+          |
+          v
+      PostgreSQL
+          |
+          +----------------------+
+          |                      |
+          v                      v
+   Traffic Analysis       Anomaly Detection
+          |                      |
+          +----------+-----------+
+                     |
+                     v
+          Device Behavior Analysis
+                     |
+                     v
+             Automated Reports
+                     |
+                     v
+                 Power BI
