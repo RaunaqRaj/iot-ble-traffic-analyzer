@@ -1,11 +1,11 @@
 import pandas as pd
-from database.db_connection import get_connection
+from database.db_connection import get_sqlalchemy_engine
 
 OUTPUT_FILE = "data/processed/device_behavior_report.csv"
 SUMMARY_FILE = "data/processed/device_behavior_summary.txt"
 
 def load_data():
-    connection = get_connection()
+    engine = get_sqlalchemy_engine()
 
     query = """
         SELECT
@@ -23,9 +23,9 @@ def load_data():
         ORDER BY packet_id
     """
 
-    df = pd.read_sql_query(query, connection)
+    df = pd.read_sql_query(query, engine)
 
-    connection.close()
+    engine.dispose()
 
     return df
 

@@ -1,7 +1,8 @@
 import os
 import psycopg2
 from dotenv import load_dotenv
-
+from sqlalchemy import create_engine
+from sqlalchemy.engine import URL
 load_dotenv()
 
 DB_CONFIG = {
@@ -19,6 +20,19 @@ def get_connection():
     )
     return connection
 
+def get_sqlalchemy_engine():
+    database_url = URL.create(
+        drivername="postgresql+psycopg2",
+        username=DB_CONFIG["user"],
+        password=DB_CONFIG["password"],
+        host=DB_CONFIG["host"],
+        port=int(DB_CONFIG["port"]),
+        database=DB_CONFIG["database"]
+    )
+
+    return create_engine(database_url)
+
+    return engine
 
 if __name__ == "__main__":
     try:

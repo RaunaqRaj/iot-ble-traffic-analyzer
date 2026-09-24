@@ -1,23 +1,24 @@
 
-BLE DEVICE BEHAVIOR ANALYSIS REPORT
-====================================
+        BLE DEVICE BEHAVIOR ANALYSIS REPORT
+        ====================================
 
-Total Devices Analyzed : 5
-Total Packets Analyzed : 300
-Total Anomalies        : 100
+        Total Devices Analyzed : 5
+        Total Packets Analyzed : 300
+        Total Anomalies        : 100
 
-Risk Distribution
------------------
-HIGH   : 1
-MEDIUM : 2
-LOW    : 2
+        Risk Distribution
+        -----------------
+        HIGH   : 1
+        MEDIUM : 2
+        LOW    : 2
 
-Highest Traffic Device
-----------------------
-Device              : aa:bb:cc:dd:ee:99
-Packets/sec         : 101.27
-Anomaly Count       : 80
-Anomaly Percentage  : 100.0%
-Risk Level          : HIGH
+        Highest Traffic Device
+        ----------------------
+        Device              : aa:bb:cc:dd:ee:99
+        Packets/sec         : 101.27
+        Anomaly Count       : 80
+        Anomaly Percentage  : 100.0%
+        Risk Level          : HIGH
 
-====================================
+        ====================================
+        
