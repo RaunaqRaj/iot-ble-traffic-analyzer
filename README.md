@@ -65,3 +65,17 @@ BLE / IoT Test Traffic
                      |
                      v
                  Power BI
+
+## 📊 Power BI Dashboard
+
+The project includes an interactive Power BI report:
+
+`power-bi/ble_monitoring.pbix`
+
+The dashboard provides:
+- Network traffic overview
+- BLE device activity
+- Device risk classification
+- Anomaly distribution
+- Packet activity over time
+- Packet-size analysis
