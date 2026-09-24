@@ -15,6 +15,9 @@ def insert_packets(df):
     connection = get_connection()
     cursor = connection.cursor()
 
+    # Clear previous packet data before loading a new capture
+    cursor.execute("TRUNCATE TABLE ble_packets RESTART IDENTITY")
+
     query = """
     INSERT INTO ble_packets (
         packet_id,
@@ -25,7 +28,7 @@ def insert_packets(df):
         payload_size
     )
     VALUES (%s, %s, %s, %s, %s, %s)
-"""
+    """
 
     for _, row in df.iterrows():
 
@@ -34,22 +37,21 @@ def insert_packets(df):
         )
 
         cursor.execute(
-    query,
-    (
-        int(row["packet_id"]),
-        timestamp,
-        row["device_address"],
-        row["packet_type"],
-        int(row["packet_length"]),
-        int(row["payload_size"])
-    )
-)
+            query,
+            (
+                int(row["packet_id"]),
+                timestamp,
+                row["device_address"],
+                row["packet_type"],
+                int(row["packet_length"]),
+                int(row["payload_size"])
+            )
+        )
 
     connection.commit()
 
     cursor.close()
     connection.close()
-
 
 def main():
 

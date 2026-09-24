@@ -23,7 +23,7 @@ Packet count        : 80
 Device Packet Counts
 --------------------
 aa:bb:cc:dd:ee:99 : 80 packets
-aa:bb:cc:dd:ee:01 : 61 packets
-aa:bb:cc:dd:ee:04 : 55 packets
-aa:bb:cc:dd:ee:02 : 54 packets
-aa:bb:cc:dd:ee:03 : 50 packets
+aa:bb:cc:dd:ee:04 : 57 packets
+aa:bb:cc:dd:ee:01 : 55 packets
+aa:bb:cc:dd:ee:03 : 55 packets
+aa:bb:cc:dd:ee:02 : 53 packets

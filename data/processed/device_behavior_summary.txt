@@ -9,8 +9,8 @@
         Risk Distribution
         -----------------
         HIGH   : 1
-        MEDIUM : 2
-        LOW    : 2
+        MEDIUM : 1
+        LOW    : 3
 
         Highest Traffic Device
         ----------------------
